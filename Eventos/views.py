@@ -68,7 +68,7 @@ class CustomLoginView(LoginView):
 
     def form_invalid(self, form):
         messages.error(self.request, 'Usuario o contraseña incorrectos. Por favor, intente nuevamente.')
-        return super().form_valid(form)
+        return super().form_invalid(form)
 
 class CustomLogoutView(View):
     def get(self, request):
