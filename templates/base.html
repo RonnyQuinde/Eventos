@@ -14,11 +14,35 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#"> Sistema Gestión de Eventos </a> <!-- Hacer enlace a lista de cursos -->
+        <a class="navbar-brand" href="{% url 'lista_eventos' %}"> Sistema Gestión de Eventos </a> <!-- Hacer enlace a lista de cursos -->
         <button class="navbar-toggler-icon" type="button" data-bs-toggle="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Hacer lista de opciones según validación del usuario -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'lista_eventos' %}">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mis_eventos' %}">Mis Eventos</a>
+                    </li>
+                    {% if user.rol == 'admin' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'crear_eventos' %}">Crear Eventos</a>
+                        </li>    
+                    {% endif %}
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'registro' %}">Registrarse</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
 </nav>
 <div class = "container mt-4">
