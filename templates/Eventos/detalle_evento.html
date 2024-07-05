@@ -20,7 +20,7 @@
             {% endif %}
         {% endif %}
 
-        {% if user.rol == 'admin' %}
+        {% if user.rol == 'admin' or user.rol == 'normal'%}
             <h3 class="mt-4>">Listado de usuarios inscritos en el evento</h3>
             <table class="table table-striped datatable">
                 <thead>
