@@ -11,6 +11,7 @@ class Usuario(AbstractUser):
 class Eventos(models.Model):
     nombre = models.CharField(max_length=150)
     descripcion = models.TextField()
+    ubicacion = models.CharField(max_length=255, default="Ubicación no especificada")
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
     cupos = models.PositiveIntegerField()
